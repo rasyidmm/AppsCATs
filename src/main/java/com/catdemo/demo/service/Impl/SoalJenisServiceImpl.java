@@ -46,6 +46,7 @@ public class SoalJenisServiceImpl implements SoalJenisService {
     public void UpdateSoalJenis(SoalJenisRequest request) throws Exception {
         IsValidate(request);
         SoalJenisEntity sje = getSoalJenisById(request.getId());
+        sje.setId(request.getId());
         sje.setNamaSoalJenis(request.getNamaSoalJenis());
         repo.getSoalJenisRepository().save(sje);
     }
