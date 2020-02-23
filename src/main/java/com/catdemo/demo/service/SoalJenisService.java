@@ -14,6 +14,10 @@ public interface SoalJenisService {
     public void SaveSoalJenis(SoalJenisRequest request) throws Exception;
     public void UpdateSoalJenis(SoalJenisRequest request)throws Exception;
     public void deleteSoalJenisById(UUID id);
+    public void deleteSoalJenisStatById(UUID id);
+    public List<SoalJenisEntity>  getSoaljenisStatActive(String Active);
+    public List<SoalJenisEntity>  getSoaljenisStatDisable(String Disable);
+    public void updateSoalJenisStatActive(UUID id,String Disable)throws Exception ;
 
 
 }
