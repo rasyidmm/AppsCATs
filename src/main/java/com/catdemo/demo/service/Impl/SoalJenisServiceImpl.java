@@ -41,22 +41,31 @@ public class SoalJenisServiceImpl implements SoalJenisService {
     public void SaveSoalJenis(SoalJenisRequest request) throws Exception{
         FieldChecker(request);
         IsExisting(request);
-        SoalJenisEntity sje = new SoalJenisEntity();
-        sje.setCreateDate(timeDo.format(new Date()));
-        sje.setVersion((long) 1);
-        sje.setNamaSoalJenis(request.getNamaSoalJenis());
-        sje.setStatus(SoalJenisConstant.SOALJENISACTIVE);
-        repo.getSoalJenisRepository().save(sje);
+        try {
+            SoalJenisEntity sje = new SoalJenisEntity();
+            sje.setCreateDate(timeDo.format(new Date()));
+            sje.setVersion((long) 1);
+            sje.setNamaSoalJenis(request.getNamaSoalJenis());
+            sje.setStatus(SoalJenisConstant.SOALJENISACTIVE);
+            repo.getSoalJenisRepository().save(sje);
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
+        }
+
     }
 
     @Override
     public void UpdateSoalJenis(SoalJenisRequest request) throws Exception {
         FieldChecker(request);
-        SoalJenisEntity sje = getSoalJenisById(request.getId());
-        sje.setUpdateDate(timeDo.format(new Date()));
-        sje.setVersion(sje.getVersion()+1);
-        sje.setNamaSoalJenis(request.getNamaSoalJenis());
-        repo.getSoalJenisRepository().save(sje);
+        try {
+            SoalJenisEntity sje = getSoalJenisById(request.getId());
+            sje.setUpdateDate(timeDo.format(new Date()));
+            sje.setVersion(sje.getVersion()+1);
+            sje.setNamaSoalJenis(request.getNamaSoalJenis());
+            repo.getSoalJenisRepository().save(sje);
+        }catch (Exception e){
+            throw  new Exception(e.getMessage());
+        }
     }
 
     @Override
@@ -73,21 +82,21 @@ public class SoalJenisServiceImpl implements SoalJenisService {
     }
 
     @Override
-    public List<SoalJenisEntity>  getSoaljenisStatActive(String Active) {
+    public List<SoalJenisEntity>  getSoaljenisStatActive() {
         List<SoalJenisEntity>sjels =  new ArrayList<>();
-        repo.getSoalJenisRepository().findByStatus(SoalJenisConstant.SOALJENISACTIVE).forEach(sjels::add);
+        repo.getSoalJenisRepository().findAllByStatus(SoalJenisConstant.SOALJENISACTIVE).forEach(sjels::add);
         return sjels;
     }
 
     @Override
-    public List<SoalJenisEntity>  getSoaljenisStatDisable(String Disable) {
+    public List<SoalJenisEntity>  getSoaljenisStatDisable() {
         List<SoalJenisEntity>sjels =  new ArrayList<>();
-        repo.getSoalJenisRepository().findByStatus(SoalJenisConstant.SOALJENISDISABLE).forEach(sjels::add);
+        repo.getSoalJenisRepository().findAllByStatus(SoalJenisConstant.SOALJENISDISABLE).forEach(sjels::add);
         return sjels;
     }
 
     @Override
-    public void updateSoalJenisStatActive(UUID id, String Disable) throws Exception {
+    public void updateSoalJenisStatActive(UUID id) throws Exception {
         if(repo.getSoalJenisRepository().findByIdAndStatus(id,SoalJenisConstant.SOALJENISDISABLE)!=null){
             SoalJenisEntity soalJenisEntity =repo.getSoalJenisRepository().findByIdAndStatus(id,SoalJenisConstant.SOALJENISDISABLE);
             soalJenisEntity.setStatus(SoalJenisConstant.SOALJENISACTIVE);

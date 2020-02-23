@@ -10,6 +10,6 @@ import java.util.UUID;
 @Repository
 public interface SoalJenisRepository extends JpaRepository<SoalJenisEntity, UUID> {
     SoalJenisEntity findByNamaSoalJenis(String NamaSoalJenis);
-    List<SoalJenisEntity>findByStatus(String Status);
+    List<SoalJenisEntity>findAllByStatus(String Status);
     SoalJenisEntity findByIdAndStatus(UUID id,String Status);
 }

@@ -127,7 +127,7 @@ public class SoalJenisController {
     public ResponseEntity  getSoaljenisStatDisable(){
         RestResponse result = new RestResponse();
         try {
-            List<SoalJenisEntity> data = service.getSoalJenisService().getSoaljenisStatActive(SoalJenisConstant.SOALJENISDISABLE);
+            List<SoalJenisEntity> data = service.getSoalJenisService().getSoaljenisStatDisable(SoalJenisConstant.SOALJENISDISABLE);
             result.setSuccess(true);
             result.setMessage(SoalJenisConstant.SOALJENISUPDATESTATACTIVESUCCESS);
             result.setDatas(data);
