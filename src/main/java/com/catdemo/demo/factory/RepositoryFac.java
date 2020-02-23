@@ -13,7 +13,5 @@ public class RepositoryFac {
     }
     @Autowired
     SoalJenisRepository soalJenisRepository;
-    public SoalJenisRepository getSoalJenisRepository(){
-        return soalJenisRepository;
-    }
+    public SoalJenisRepository getSoalJenisRepository(){ return soalJenisRepository; }
 }

@@ -3,6 +3,7 @@ package com.catdemo.demo.controller;
 import com.catdemo.demo.entity.SoalJenisEntity;
 import com.catdemo.demo.factory.ServiceFac;
 import com.catdemo.demo.payload.request.SoalJenisRequest;
+import com.catdemo.demo.util.constants.SoalJenisConstant;
 import com.catdemo.demo.util.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,15 +25,14 @@ public class SoalJenisController {
         try {
             List<SoalJenisEntity>data =service.getSoalJenisService().getAllSoalJenis();
             result.setDatas(data);
-            result.setMessage("");
+            result.setMessage(SoalJenisConstant.SOALJENISGETALL);
             result.setSuccess(true);
             return ResponseEntity.ok(result);
         }catch (Exception e){
             result.setSuccess(false);
             result.setMessage(e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
-    }
-
+        }
     }
 
     @PostMapping(value = "/add")
@@ -40,7 +40,7 @@ public class SoalJenisController {
         RestResponse result = new RestResponse();
         try{service.getSoalJenisService().SaveSoalJenis(request);
             result.setSuccess(true);
-            result.setMessage("Add Soal Jenis Success");
+            result.setMessage(SoalJenisConstant.SOALJENISADDSUCCESS);
             return ResponseEntity.ok(result);
         }catch (Exception e){
             result.setSuccess(false);
@@ -53,7 +53,7 @@ public class SoalJenisController {
         RestResponse result = new RestResponse();
         try {
             service.getSoalJenisService().UpdateSoalJenis(request);
-            result.setMessage("Update Soal Jenis Success");
+            result.setMessage(SoalJenisConstant.SOALJENISUPDATESUCCESS);
             result.setSuccess(true);
             return ResponseEntity.ok(result);
         }catch (Exception e){

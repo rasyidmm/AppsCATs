@@ -4,6 +4,7 @@ import com.catdemo.demo.entity.SoalJenisEntity;
 import com.catdemo.demo.factory.RepositoryFac;
 import com.catdemo.demo.payload.request.SoalJenisRequest;
 import com.catdemo.demo.service.SoalJenisService;
+import com.catdemo.demo.util.constants.SoalJenisConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,8 +36,8 @@ public class SoalJenisServiceImpl implements SoalJenisService {
 
     @Override
     public void SaveSoalJenis(SoalJenisRequest request) throws Exception{
-        IsValidate(request);
-        IsSameName(request);
+        FieldChecker(request);
+        IsExisting(request);
         SoalJenisEntity sje = new SoalJenisEntity();
         sje.setNamaSoalJenis(request.getNamaSoalJenis());
         repo.getSoalJenisRepository().save(sje);
@@ -44,7 +45,7 @@ public class SoalJenisServiceImpl implements SoalJenisService {
 
     @Override
     public void UpdateSoalJenis(SoalJenisRequest request) throws Exception {
-        IsValidate(request);
+        FieldChecker(request);
         SoalJenisEntity sje = getSoalJenisById(request.getId());
         sje.setId(request.getId());
         sje.setNamaSoalJenis(request.getNamaSoalJenis());
@@ -55,17 +56,20 @@ public class SoalJenisServiceImpl implements SoalJenisService {
     public void deleteSoalJenisById(UUID id) {
         repo.getSoalJenisRepository().deleteById(id);
     }
+
+
+
     //Checker
-    private void IsValidate(SoalJenisRequest request) throws Exception {
+    private void FieldChecker(SoalJenisRequest request) throws Exception {
        if(request.getNamaSoalJenis().isEmpty() || request.getNamaSoalJenis()==" "|| request.getNamaSoalJenis()== null){
-           throw new Exception("Nama Soal Jenis Is Empty");
+           throw new Exception(SoalJenisConstant.SOALJENISNAMENULL);
        }
 
     }
 
-    private void IsSameName(SoalJenisRequest request) throws Exception {
+    private void IsExisting(SoalJenisRequest request) throws Exception {
         if(getSoalJenisByName(request.getNamaSoalJenis())!=null){
-            throw  new Exception("Soal Jenis Sudah ada");
+            throw  new Exception(SoalJenisConstant.SOALJENISNAMAEXISTING);
         }
     }
 }
