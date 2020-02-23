@@ -2,6 +2,7 @@ package com.catdemo.demo.factory;
 
 import com.catdemo.demo.service.SoalJenisService;
 import com.catdemo.demo.service.SoalKelompokService;
+import com.catdemo.demo.service.SoalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,8 @@ public class ServiceFac {
     }
     @Autowired
     SoalKelompokService soalKelompokService;
-    public SoalKelompokService getSoalKelompokService(){ return soalKelompokService;
-    }
+    public SoalKelompokService getSoalKelompokService(){ return soalKelompokService;}
+    @Autowired
+    SoalService soalService;
+    public SoalService getSoalService(){return soalService;}
 }

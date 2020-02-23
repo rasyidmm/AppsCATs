@@ -112,7 +112,7 @@ public class SoalJenisController {
     public ResponseEntity getSoaljenisStatActive(){
         RestResponse result = new RestResponse();
         try {
-            List<SoalJenisEntity> data = service.getSoalJenisService().getSoaljenisStatActive(SoalJenisConstant.SOALJENISACTIVE);
+            List<SoalJenisEntity> data = service.getSoalJenisService().getSoaljenisStatActive();
             result.setSuccess(true);
             result.setMessage(SoalJenisConstant.SOALJENISUPDATESTATACTIVESUCCESS);
             result.setDatas(data);
@@ -127,7 +127,7 @@ public class SoalJenisController {
     public ResponseEntity  getSoaljenisStatDisable(){
         RestResponse result = new RestResponse();
         try {
-            List<SoalJenisEntity> data = service.getSoalJenisService().getSoaljenisStatDisable(SoalJenisConstant.SOALJENISDISABLE);
+            List<SoalJenisEntity> data = service.getSoalJenisService().getSoaljenisStatDisable();
             result.setSuccess(true);
             result.setMessage(SoalJenisConstant.SOALJENISUPDATESTATACTIVESUCCESS);
             result.setDatas(data);
@@ -142,7 +142,7 @@ public class SoalJenisController {
     public ResponseEntity updateSoalJenisStatActive(@PathVariable UUID id)throws Exception{
         RestResponse result = new RestResponse();
         try {
-            service.getSoalJenisService().updateSoalJenisStatActive(id,SoalJenisConstant.SOALJENISDISABLE);
+            service.getSoalJenisService().updateSoalJenisStatActive(id);
             result.setSuccess(true);
             result.setMessage(SoalJenisConstant.SOALJENISUPDATESTATACTIVESUCCESS);
             return ResponseEntity.ok(result);

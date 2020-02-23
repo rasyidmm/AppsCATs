@@ -3,6 +3,7 @@ package com.catdemo.demo.entity;
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 @Cacheable

@@ -1,7 +1,7 @@
 package com.catdemo.demo.util.constants;
 
 public class SoalKelompokConstant {
-
+    //Service
     public static String SOALKELOMPOKEXISTING = "Soal kelompok Existing";
     public static String SOALKELOMPOKNULL = "Nama Soal kelompok Null";
     public static String SOALKELOMPOKSTATACTIVE = "ACTIVE";
