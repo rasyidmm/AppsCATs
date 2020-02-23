@@ -6,4 +6,5 @@ public class SoalKelompokConstant {
     public static String SOALKELOMPOKNULL = "Nama Soal kelompok Null";
     public static String SOALKELOMPOKSTATACTIVE = "ACTIVE";
     public static String SOALKELOMPOKSTATDISABLE = "DISABLE";
+    public static String SOALKELOMPOKNAMEDISABLENOTABLE = "Soal Kelompok Disable Not Existing";
 }

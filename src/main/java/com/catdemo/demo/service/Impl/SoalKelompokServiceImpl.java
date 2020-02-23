@@ -4,6 +4,7 @@ import com.catdemo.demo.entity.SoalKelompokEntity;
 import com.catdemo.demo.factory.RepositoryFac;
 import com.catdemo.demo.payload.request.SoalKelompokRequest;
 import com.catdemo.demo.service.SoalKelompokService;
+import com.catdemo.demo.util.constants.SoalJenisConstant;
 import com.catdemo.demo.util.constants.SoalKelompokConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,7 +117,7 @@ public class SoalKelompokServiceImpl implements SoalKelompokService {
                 throw new Exception(e.getMessage());
             }
         }else {
-            throw new Exception("Soal Kelompok Disable Not Existing");
+            throw new Exception(SoalKelompokConstant.SOALKELOMPOKNAMEDISABLENOTABLE);
         }
     }
 
