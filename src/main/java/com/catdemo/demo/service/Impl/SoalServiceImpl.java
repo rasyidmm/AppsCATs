@@ -4,6 +4,7 @@ import com.catdemo.demo.entity.SoalEntity;
 import com.catdemo.demo.factory.RepositoryFac;
 import com.catdemo.demo.payload.request.SoalRequest;
 import com.catdemo.demo.service.SoalService;
+import com.catdemo.demo.util.constants.SoalConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,10 +45,10 @@ public class SoalServiceImpl implements SoalService {
             se.setLinkImage("");
             se.setVersion((long) 1);
             se.setCreateDate(timeDo.format(new Date()));
-            se.setStatus("");
+            se.setStatus(SoalConstant.SOALSTATACTIVE);
             repo.getSoalRepository().save(se);
         }catch (Exception e){
-            throw new Exception("");
+            throw new Exception(e);
         }
     }
 
@@ -66,48 +67,70 @@ public class SoalServiceImpl implements SoalService {
             se.setUpdateDate(timeDo.format(new Date()));
             repo.getSoalRepository().save(se);
         }catch (Exception e){
-            throw new Exception("");
+            throw new Exception(e);
         }
     }
 
     @Override
     public void deleteSoalById(UUID id) {
-
+        repo.getSoalRepository().deleteById(id);
     }
 
     @Override
     public void deleteSoalStatById(UUID id) throws Exception {
-
+        try {
+            SoalEntity se = getSoalById(id);
+            se.setStatus(SoalConstant.SOALSTATDISABLE);
+            se.setUpdateDate(timeDo.format(new Date()));
+            repo.getSoalRepository().save(se);
+        }catch (Exception e){
+            throw new Exception(e);
+        }
     }
 
     @Override
     public List<SoalEntity> getSoalStatActive() {
-        return null;
+        List<SoalEntity> sel = new ArrayList<>();
+        repo.getSoalRepository().findAllByStatus(SoalConstant.SOALSTATACTIVE).forEach(sel::add);
+        return sel;
     }
 
     @Override
     public List<SoalEntity> getSoalStatDisable() {
-        return null;
+        List<SoalEntity> sel = new ArrayList<>();
+        repo.getSoalRepository().findAllByStatus(SoalConstant.SOALSTATDISABLE).forEach(sel::add);
+        return sel;
     }
 
     @Override
     public void updateSoalStatActive(UUID id) throws Exception {
-
+        if (repo.getSoalRepository().findByIdAndStatus(id,SoalConstant.SOALSTATDISABLE)!=null){
+            try {
+                SoalEntity se = getSoalById(id);
+                se.setStatus(SoalConstant.SOALSTATACTIVE);
+                se.setUpdateDate(timeDo.format(new Date()));
+                repo.getSoalRepository().save(se);
+            }catch (Exception e){
+                throw new Exception(e);
+            }
+        }else {
+            throw new Exception(SoalConstant.SOALSTATDISABLENOTEXISTING);
+        }
     }
 
     private void FieldNullChecker(SoalRequest request) throws Exception{
         if (request.getSoal().isEmpty()||request.getSoal()==null||request.getSoal()==" "){
-            throw new Exception("");
+            throw new Exception(SoalConstant.SOALFIELDSOALNULL);
         }else if (request.getIdSoalJenis() == null){
-            throw new Exception("");
+            throw new Exception(SoalConstant.SOALFIELDIDJENISSAOLNULL);
         }else if (request.getIdSoalKelompok() == null){
-            throw new Exception("");
+            throw new Exception(SoalConstant.SOALFIELDIDKELOMPOKSOALNULL);
         }
     }
 
     private void SameNameChacker(SoalRequest request)throws Exception{
         if(repo.getSoalRepository().findBySoal(request.getSoal())!=null){
-            throw new Exception("");
+            throw new Exception(SoalConstant.SOALSAMENAME);
         }
     }
 }
