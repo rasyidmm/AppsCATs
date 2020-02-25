@@ -116,6 +116,7 @@ public class SoalJawabanServiceImpl implements SoalJawabanService {
             throw new Exception(SoalJawabanConstant.SOALJAWABANSTATDISABLENOTEXIT);
         }
     }
+    //Checker
     private void FieldNullChecker(SoalJawabanRequest request) throws Exception{
         if (request.getIdSoalEntity() ==null){
             throw new Exception(SoalJawabanConstant.SOALJAWABANIDSOALNULL);
