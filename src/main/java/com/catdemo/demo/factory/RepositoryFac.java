@@ -1,8 +1,5 @@
 package com.catdemo.demo.factory;
-import com.catdemo.demo.repository.AktorJawabanRepository;
-import com.catdemo.demo.repository.SoalJenisRepository;
-import com.catdemo.demo.repository.SoalKelompokRepository;
-import com.catdemo.demo.repository.SoalRepository;
+import com.catdemo.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,4 +19,7 @@ public class RepositoryFac {
     @Autowired
     SoalRepository soalRepository;
     public SoalRepository getSoalRepository(){return soalRepository;}
+    @Autowired
+    SoalJawabanRepository soalJawabanRepository;
+    public SoalJawabanRepository getSoalJawabanRepository(){return soalJawabanRepository;}
 }
