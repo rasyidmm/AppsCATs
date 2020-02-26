@@ -1,14 +1,14 @@
 package com.catdemo.demo.factory;
 
-import com.catdemo.demo.service.SoalJawabanService;
-import com.catdemo.demo.service.SoalJenisService;
-import com.catdemo.demo.service.SoalKelompokService;
-import com.catdemo.demo.service.SoalService;
+import com.catdemo.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ServiceFac {
+    @Autowired
+    AktorService aktorService;
+    public AktorService getAktorService(){return  aktorService;}
     @Autowired
     SoalJenisService soalJenisService;
     public SoalJenisService getSoalJenisService(){
@@ -23,4 +23,6 @@ public class ServiceFac {
     @Autowired
     SoalJawabanService soalJawabanService;
     public SoalJawabanService getSoalJawabanService(){return soalJawabanService;}
+    @Autowired
+    UjianService ujianService; public UjianService getUjianService(){return ujianService;}
 }

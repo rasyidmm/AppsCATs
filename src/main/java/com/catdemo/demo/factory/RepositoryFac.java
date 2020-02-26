@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class RepositoryFac {
     @Autowired
-    AktorJawabanRepository aktorJawabanRepository;
-    public  AktorJawabanRepository getAktorJawabanRepository(){
-        return aktorJawabanRepository;
+    AktorRepository aktorRepository;
+    public  AktorRepository getAktorRepository(){
+        return aktorRepository;
     }
     @Autowired
     SoalJenisRepository soalJenisRepository;
@@ -22,4 +22,10 @@ public class RepositoryFac {
     @Autowired
     SoalJawabanRepository soalJawabanRepository;
     public SoalJawabanRepository getSoalJawabanRepository(){return soalJawabanRepository;}
+    @Autowired
+    UjianRepository ujianRepository;
+    public UjianRepository getUjianRepository(){return ujianRepository;}
+    @Autowired
+    AktorJawabanRepository aktorJawabanRepository;
+    public AktorJawabanRepository getAktorJawabanRepository(){return aktorJawabanRepository;}
 }
