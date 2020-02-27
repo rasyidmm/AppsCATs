@@ -123,27 +123,27 @@ public class AktorServiceImpl implements AktorService {
                 throw new Exception(e.getMessage());
             }
         }else {
-            throw new Exception("");
+            throw new Exception(AktorConstant.AKTORSTATDISABLENOTFOUND);
         }
     }
 
     private void FieldNullChecker(AktorRequest request) throws Exception{
         if (request.getAlamatRumah().isEmpty()|| request.getAlamatRumah()==null){
-
+            throw new Exception(AktorConstant.AKTORFIELDALAMATRUMAHNULL);
         }else if(request.getEmailActor().isEmpty()||request.getEmailActor()==null){
-
+            throw new Exception(AktorConstant.AKTORFIELDEMAILNULL);
         }else if (request.getJenisKelamin().isEmpty()||request.getJenisKelamin()==null){
-
+            throw new Exception(AktorConstant.AKTORFIELDJENISKELAMINNULL);
         }else if (request.getNamaDepan().isEmpty()||request.getNamaDepan()==null){
-
+            throw new Exception(AktorConstant.AKTORFIELDNAMADEPANNULL);
         }else if(request.getNamaBelakang().isEmpty()||request.getNamaBelakang()==null){
-
+            throw new Exception(AktorConstant.AKTORFIELDNAMABELAKANGNULL);
         }else if(request.getNoHandphone().isEmpty()||request.getNoHandphone()==null){
-
+            throw new Exception(AktorConstant.AKTORFIELDNOHANDPHONEULL);
         }else if (request.getUsername().isEmpty()||request.getUsername()==null){
-
+            throw new Exception(AktorConstant.AKTORFIELDUSERNAMENULL);
         }else if (request.getPassword().isEmpty()||request.getPassword()==null){
-
+            throw new Exception(AktorConstant.AKTORFIELDPASSWORDNULL);
         }
 
     }
