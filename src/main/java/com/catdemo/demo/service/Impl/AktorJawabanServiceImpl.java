@@ -3,6 +3,7 @@ package com.catdemo.demo.service.Impl;
 import com.catdemo.demo.entity.AktorJawabanEntity;
 import com.catdemo.demo.factory.RepositoryFac;
 import com.catdemo.demo.service.AktorJawabanService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.UUID;
 
 @Service
 public class AktorJawabanServiceImpl implements AktorJawabanService {
+    @Autowired
     RepositoryFac repo;
     @Override
     public List<AktorJawabanEntity> getAllJawaban() {

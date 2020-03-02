@@ -16,4 +16,6 @@ public interface SoalService {
     public List<SoalEntity>  getSoalStatActive();
     public List<SoalEntity>  getSoalStatDisable();
     public void updateSoalStatActive(UUID id)throws Exception ;
+    public SoalEntity getRandom();
+    public List<SoalEntity> getAllSoalTWKActive() ;
 }

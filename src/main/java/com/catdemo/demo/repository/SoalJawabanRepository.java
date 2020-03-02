@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 @Repository
 public interface SoalJawabanRepository extends JpaRepository<SoalJawabanEntity,UUID> {
-    SoalJawabanEntity findByNamaSoalJenis(String NamaSoalJenis);
+    SoalJawabanEntity findBysoalJawaban(String NamaSoalJenis);
     List<SoalJawabanEntity>findAllByStatus(String Status);
     SoalJawabanEntity findByIdAndStatus(UUID id,String Status);
 }

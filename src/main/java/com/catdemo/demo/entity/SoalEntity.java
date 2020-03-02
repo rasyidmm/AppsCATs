@@ -1,9 +1,8 @@
 package com.catdemo.demo.entity;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Cacheable

@@ -120,7 +120,7 @@ public class SoalKelompokServiceImpl implements SoalKelompokService {
     //Checker
 
     private void FieldNullChecker(SoalKelompokRequest request) throws Exception{
-        if(request.getNamaSoalKelompok()!=null || request.getNamaSoalKelompok().isEmpty() || request.getNamaSoalKelompok()== "" ){
+        if(request.getNamaSoalKelompok()==null || request.getNamaSoalKelompok().isEmpty() || request.getNamaSoalKelompok()== "" ){
             throw new Exception(SoalKelompokConstant.SOALKELOMPOKNULL);
         }
     }

@@ -11,5 +11,7 @@ public interface SoalRepository extends JpaRepository<SoalEntity, UUID> {
     SoalEntity findBySoal(String namaSoal);
     List<SoalEntity>findAllByStatus(String Status);
     SoalEntity findByIdAndStatus(UUID id,String Status);
+    List<SoalEntity>findAllByStatusAndSoalKelompokEntity(String status,UUID idske);
+
 
 }

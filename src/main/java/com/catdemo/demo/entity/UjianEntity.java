@@ -1,8 +1,7 @@
 package com.catdemo.demo.entity;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Cacheable
@@ -10,7 +9,7 @@ public class UjianEntity extends Additional{
     private String namaUjian;
     private Long durasiUjian;
     @ManyToOne
-    private SoalEntity soalEntity;
+    private AktorEntity aktorEntity;
 
     public String getNamaUjian() {
         return namaUjian;
@@ -28,11 +27,12 @@ public class UjianEntity extends Additional{
         this.durasiUjian = durasiUjian;
     }
 
-    public SoalEntity getSoalEntity() {
-        return soalEntity;
+    public AktorEntity getAktorEntity() {
+        return aktorEntity;
     }
 
-    public void setSoalEntity(SoalEntity soalEntity) {
-        this.soalEntity = soalEntity;
+    public void setAktorEntity(AktorEntity aktorEntity) {
+        this.aktorEntity = aktorEntity;
     }
+
 }

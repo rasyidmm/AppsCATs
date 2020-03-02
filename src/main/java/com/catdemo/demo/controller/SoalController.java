@@ -124,7 +124,7 @@ public class SoalController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity SoalAdd(SoalRequest request) throws Exception{
+    public ResponseEntity SoalAdd(@RequestBody SoalRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getSoalService().SaveSoal(request);
@@ -139,7 +139,7 @@ public class SoalController {
         }
     }
     @PutMapping(value = "/update")
-    public ResponseEntity SoalUpdate(SoalRequest request) throws Exception{
+    public ResponseEntity SoalUpdate(@RequestBody SoalRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getSoalService().UpdateSoal(request);
@@ -152,5 +152,13 @@ public class SoalController {
             result.setMessage(e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
+    }
+
+    @GetMapping(value = "/random")
+    public ResponseEntity SoalRandom(){
+        RestResponse result = new RestResponse();
+        result.setMessage("berhasil");
+        result.setDatas(service.getSoalService().getRandom());
+        return ResponseEntity.ok(result);
     }
 }

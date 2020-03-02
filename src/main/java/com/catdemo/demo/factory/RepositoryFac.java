@@ -28,4 +28,26 @@ public class RepositoryFac {
     @Autowired
     AktorJawabanRepository aktorJawabanRepository;
     public AktorJawabanRepository getAktorJawabanRepository(){return aktorJawabanRepository;}
+    @Autowired
+    UjianSettingRepository ujianSettingRepository;
+    public UjianSettingRepository getUjianSettingRepository(){return ujianSettingRepository;}
+
+
+
+
+
+
+
+
+
+
+
+
+    //
+    @Autowired
+    UjianSoalRepository ujianSoalRepository;
+
+    public UjianSoalRepository getUjianSoalRepository() {
+        return ujianSoalRepository;
+    }
 }

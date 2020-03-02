@@ -16,4 +16,6 @@ public interface UjianService {
     public List<UjianEntity>  getUjianStatActive();
     public List<UjianEntity>  getUjianStatDisable();
     public void updateUjianStatActive(UUID id)throws Exception ;
+    public UjianEntity getUjianByNameUjian(String namaUjian);
+
 }

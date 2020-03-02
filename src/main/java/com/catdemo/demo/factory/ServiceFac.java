@@ -24,5 +24,9 @@ public class ServiceFac {
     SoalJawabanService soalJawabanService;
     public SoalJawabanService getSoalJawabanService(){return soalJawabanService;}
     @Autowired
-    UjianService ujianService; public UjianService getUjianService(){return ujianService;}
+    UjianService ujianService;
+    public UjianService getUjianService(){return ujianService;}
+    @Autowired
+    UjianSettingService ujianSettingService;
+    public UjianSettingService getUjianSettingService(){return ujianSettingService;}
 }

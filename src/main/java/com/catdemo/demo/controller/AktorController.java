@@ -20,7 +20,7 @@ public class AktorController {
     ServiceFac service;
     RestResponse result;
     @GetMapping(value = "/")
-    public ResponseEntity SoalGelAll(){
+    public ResponseEntity AktorGelAll(){
         result =new RestResponse();
         try {
             List<AktorEntity> data = service.getAktorService().getAllAktor();
@@ -35,7 +35,7 @@ public class AktorController {
         }
     }
     @GetMapping(value = "/statactive/")
-    public ResponseEntity SoalGetAllActive(){
+    public ResponseEntity AktorGetAllActive(){
         result =new RestResponse();
         try {
             List<AktorEntity> data = service.getAktorService().getAktorStatActive();
@@ -50,7 +50,7 @@ public class AktorController {
         }
     }
     @GetMapping(value = "/statdisable/")
-    public ResponseEntity SoalGetAllDisable(){
+    public ResponseEntity AktorGetAllDisable(){
         result =new RestResponse();
         try {
             List<AktorEntity> data = service.getAktorService().getAktorStatDisable();
@@ -65,7 +65,7 @@ public class AktorController {
         }
     }
     @GetMapping(value ="/{id}")
-    public ResponseEntity SoalGetByid(@PathVariable UUID id){
+    public ResponseEntity AktorGetByid(@PathVariable UUID id){
         result = new RestResponse();
         try {
             AktorEntity data = service.getAktorService().getAktorById(id);
@@ -80,7 +80,7 @@ public class AktorController {
         }
     }
     @GetMapping(value ="/toactive/{id}")
-    public ResponseEntity SoalToActiveById(@PathVariable UUID id){
+    public ResponseEntity AktorToActiveById(@PathVariable UUID id){
         result = new RestResponse();
         try {
             service.getAktorService().updateAktorStatActive(id);
@@ -94,7 +94,7 @@ public class AktorController {
         }
     }
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity SoalDeleteByid(@PathVariable UUID id){
+    public ResponseEntity AktorDeleteByid(@PathVariable UUID id){
         RestResponse result = new RestResponse();
         try {
             service.getAktorService().deleteAktorById(id);
@@ -109,7 +109,7 @@ public class AktorController {
         }
     }
     @DeleteMapping(value = "/deletestat/{id}")
-    public ResponseEntity SoalStatDeleteBy(@PathVariable UUID id){
+    public ResponseEntity AktorStatDeleteBy(@PathVariable UUID id){
         RestResponse result = new RestResponse();
         try {
             service.getAktorService().deleteAktorStatById(id);
@@ -124,7 +124,7 @@ public class AktorController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity SoalAdd(AktorRequest request) throws Exception{
+    public ResponseEntity AktorAdd(AktorRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getAktorService().SaveAktor(request);
@@ -139,7 +139,7 @@ public class AktorController {
         }
     }
     @PutMapping(value = "/update")
-    public ResponseEntity SoalUpdate(AktorRequest request) throws Exception{
+    public ResponseEntity AktorUpdate(AktorRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getAktorService().UpdateAktor(request);

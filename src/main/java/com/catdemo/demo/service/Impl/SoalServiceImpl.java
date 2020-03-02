@@ -5,14 +5,13 @@ import com.catdemo.demo.factory.RepositoryFac;
 import com.catdemo.demo.payload.request.SoalRequest;
 import com.catdemo.demo.service.SoalService;
 import com.catdemo.demo.util.constants.SoalConstant;
+import com.catdemo.demo.util.constants.SoalJawabanConstant;
+import com.catdemo.demo.util.constants.UjianSettingConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class SoalServiceImpl implements SoalService {
@@ -116,6 +115,25 @@ public class SoalServiceImpl implements SoalService {
         }else {
             throw new Exception(SoalConstant.SOALSTATDISABLENOTEXISTING);
         }
+    }
+
+    @Override
+    public SoalEntity getRandom() {
+        List<SoalEntity>rrr =getAllSoal();
+        Random dd =  new Random();
+
+        SoalEntity jug = rrr.get(dd.nextInt(rrr.size()));
+        return jug;
+
+    }
+
+    @Override
+    public List<SoalEntity> getAllSoalTWKActive() {
+        List<SoalEntity> sel = new ArrayList<>();
+        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity(SoalConstant.SOALSTATACTIVE,repo.getSoalKelompokRepository().
+                findByNamaSoalKelompok(UjianSettingConstant.UJIANSETTINGTWK).
+                getId()).forEach(sel::add);
+        return sel;
     }
 
     private void FieldNullChecker(SoalRequest request) throws Exception{

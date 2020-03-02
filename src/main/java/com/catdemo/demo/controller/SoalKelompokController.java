@@ -79,13 +79,12 @@ public class SoalKelompokController {
         }
     }
     @PostMapping(value = "/add")
-    public ResponseEntity SoalKelompokAdd(SoalKelompokRequest request) throws Exception{
+    public ResponseEntity SoalKelompokAdd(@RequestBody SoalKelompokRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getSoalKelompokService().SaveSoalKelompok(request);
             result.setMessage(SoalKelompokConstant.SOALKELOMPOKADDSUCCESS);
             result.setSuccess(true);
-            result.setDatas(request);
             return ResponseEntity.ok(request);
         }catch (Exception e) {
             result.setSuccess(false);
@@ -94,7 +93,7 @@ public class SoalKelompokController {
         }
     }
     @PutMapping(value = "/update")
-    public ResponseEntity SoalKelompokUpdate(SoalKelompokRequest request) throws Exception{
+    public ResponseEntity SoalKelompokUpdate(@RequestBody SoalKelompokRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getSoalKelompokService().UpdateSoalKelompok(request);

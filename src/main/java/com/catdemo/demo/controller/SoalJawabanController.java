@@ -125,7 +125,7 @@ public class SoalJawabanController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity SoalJawabanAdd(SoalJawabanRequest request) throws Exception{
+    public ResponseEntity SoalJawabanAdd(@RequestBody SoalJawabanRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getSoalJawabanService().SaveSoalJawaban(request);
@@ -140,7 +140,7 @@ public class SoalJawabanController {
         }
     }
     @PutMapping(value = "/update")
-    public ResponseEntity SoalJawabanUpdate(SoalJawabanRequest request) throws Exception{
+    public ResponseEntity SoalJawabanUpdate(@RequestBody SoalJawabanRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getSoalJawabanService().UpdateSoalJawaban(request);

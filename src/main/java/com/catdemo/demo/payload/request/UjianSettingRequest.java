@@ -1,13 +1,19 @@
-package com.catdemo.demo.entity;
+package com.catdemo.demo.payload.request;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
+import java.util.UUID;
 
-@Entity
-@Cacheable
-public class UjianSettingEntity extends Additional{
+public class UjianSettingRequest {
+    private UUID id;
     private String namaSetting;
     private int valueSetting;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getNamaSetting() {
         return namaSetting;
