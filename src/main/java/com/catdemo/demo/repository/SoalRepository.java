@@ -2,6 +2,7 @@ package com.catdemo.demo.repository;
 
 import com.catdemo.demo.entity.SoalEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public interface SoalRepository extends JpaRepository<SoalEntity, UUID> {
     List<SoalEntity>findAllByStatus(String Status);
     SoalEntity findByIdAndStatus(UUID id,String Status);
     List<SoalEntity>findAllByStatusAndSoalKelompokEntity(String status,UUID idske);
+    @Query("")
+    //untuk mendapkan Soal dengan
 
 
 }

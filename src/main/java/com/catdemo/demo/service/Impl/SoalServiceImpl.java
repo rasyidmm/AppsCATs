@@ -136,6 +136,24 @@ public class SoalServiceImpl implements SoalService {
         return sel;
     }
 
+    @Override
+    public List<SoalEntity> getAllSoalTIUActive() {
+        List<SoalEntity> sel = new ArrayList<>();
+        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity(SoalConstant.SOALSTATACTIVE,repo.getSoalKelompokRepository().
+                findByNamaSoalKelompok(UjianSettingConstant.UJIANSETTINGTIU).
+                getId()).forEach(sel::add);
+        return sel;
+    }
+
+    @Override
+    public List<SoalEntity> getAllSoalTKPActive() {
+        List<SoalEntity> sel = new ArrayList<>();
+        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity(SoalConstant.SOALSTATACTIVE,repo.getSoalKelompokRepository().
+                findByNamaSoalKelompok(UjianSettingConstant.UJIANSETTINGTKP).
+                getId()).forEach(sel::add);
+        return sel;
+    }
+
     private void FieldNullChecker(SoalRequest request) throws Exception{
         if (request.getSoal().isEmpty()||request.getSoal()==null||request.getSoal()==" "){
             throw new Exception(SoalConstant.SOALFIELDSOALNULL);
