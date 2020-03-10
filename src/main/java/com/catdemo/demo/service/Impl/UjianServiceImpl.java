@@ -43,10 +43,10 @@ public class UjianServiceImpl implements UjianService {
             ujians.setNamaUjian(request.getNamaUjian());
             ujians.setAktorEntity(service.getAktorService().getAktorById(request.getIdAktorEntity()));
             GetSoalTwkRandom(request.getNamaUjian());
-            GetSoalTKPRandom(request.getNamaUjian());
-            GetSoalTIURandom(request.getNamaUjian());
+//            GetSoalTKPRandom(request.getNamaUjian());
+//            GetSoalTIURandom(request.getNamaUjian());
         }catch (Exception e){
-
+            throw new Exception(e.getMessage());
         }
     }
 
@@ -89,7 +89,7 @@ public class UjianServiceImpl implements UjianService {
 
     private void GetSoalTwkRandom(String namaUjian){
 
-        int twk = service.getUjianSettingService().getValueTwk().getValueSetting();
+        int twk = 5;
         List<UUID> uuidtampung =new ArrayList<>();
         List<SoalEntity>soalListTwk =service.getSoalService().getAllSoalTWKActive();
         int temp = 0;

@@ -154,6 +154,13 @@ public class SoalServiceImpl implements SoalService {
         return sel;
     }
 
+    @Override
+    public List<SoalEntity> getAlSoalByNamaUjian(String namaUjian) {
+        List<SoalEntity> sel = new ArrayList<>();
+        repo.getSoalRepository().findAllByNamaUjian(namaUjian).forEach(sel::add);
+        return sel;
+    }
+
     private void FieldNullChecker(SoalRequest request) throws Exception{
         if (request.getSoal().isEmpty()||request.getSoal()==null||request.getSoal()==" "){
             throw new Exception(SoalConstant.SOALFIELDSOALNULL);

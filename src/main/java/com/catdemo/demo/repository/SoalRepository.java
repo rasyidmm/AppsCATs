@@ -13,7 +13,9 @@ public interface SoalRepository extends JpaRepository<SoalEntity, UUID> {
     List<SoalEntity>findAllByStatus(String Status);
     SoalEntity findByIdAndStatus(UUID id,String Status);
     List<SoalEntity>findAllByStatusAndSoalKelompokEntity(String status,UUID idske);
-    @Query("")
+
+    @Query(value = "select * from soal_entity se join ujian_soal_entity use on se.id = use.ujian_entity_id join ujian_entity ue on use.ujian_entity_id =ue.id where ue.nama_ujian =:namaUjian ",nativeQuery = true)
+    List<SoalEntity>findAllByNamaUjian(String namaUjian);
     //untuk mendapkan Soal dengan
 
 

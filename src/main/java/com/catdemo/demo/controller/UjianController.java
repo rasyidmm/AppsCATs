@@ -26,10 +26,10 @@ public class UjianController {
         result = new RestResponse();
         UUID idc = UUID.randomUUID();
         try {
-            String namaUian =  service.getAktorService().getAktorById(request.getIdAktorEntity()).getNamaDepan().concat(idc.toString() );
-            request.setNamaUjian(namaUian);
+            String namaUjian =  service.getAktorService().getAktorById(request.getIdAktorEntity()).getNamaDepan().concat(idc.toString() );
+            request.setNamaUjian(namaUjian);
             service.getUjianService().SaveUjian(request);
-            result.setDatas();
+            result.setDatas(service.getSoalService().getAlSoalByNamaUjian(namaUjian));
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             result.setSuccess(false);

@@ -124,7 +124,7 @@ public class AktorController {
     }
 
     @PostMapping(value = "/add")
-    public ResponseEntity AktorAdd(AktorRequest request) throws Exception{
+    public ResponseEntity AktorAdd(@RequestBody AktorRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getAktorService().SaveAktor(request);
@@ -139,7 +139,7 @@ public class AktorController {
         }
     }
     @PutMapping(value = "/update")
-    public ResponseEntity AktorUpdate(AktorRequest request) throws Exception{
+    public ResponseEntity AktorUpdate(@RequestBody AktorRequest request) throws Exception{
         RestResponse result = new RestResponse();
         try {
             service.getAktorService().UpdateAktor(request);
