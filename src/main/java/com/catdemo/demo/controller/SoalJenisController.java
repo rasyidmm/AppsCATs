@@ -80,7 +80,7 @@ public class SoalJenisController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity DeleteSoalJenisById(@PathVariable UUID id){
         RestResponse result = new RestResponse();
         try {
@@ -94,7 +94,7 @@ public class SoalJenisController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
-    @DeleteMapping(value = "/stat/{id}")
+    @DeleteMapping(value = "/deletestat/{id}")
     public ResponseEntity DeleteSoalJenisStatById(@PathVariable UUID id){
         RestResponse result = new RestResponse();
         try {
@@ -114,7 +114,7 @@ public class SoalJenisController {
         try {
             List<SoalJenisEntity> data = service.getSoalJenisService().getSoaljenisStatActive();
             result.setSuccess(true);
-            result.setMessage(SoalJenisConstant.SOALJENISUPDATESTATACTIVESUCCESS);
+            result.setMessage(SoalJenisConstant.SOALJENISGETALLSTATUSACTIVESUCCESS);
             result.setDatas(data);
             return ResponseEntity.ok(result);
         }catch (Exception e){
@@ -129,7 +129,7 @@ public class SoalJenisController {
         try {
             List<SoalJenisEntity> data = service.getSoalJenisService().getSoaljenisStatDisable();
             result.setSuccess(true);
-            result.setMessage(SoalJenisConstant.SOALJENISUPDATESTATACTIVESUCCESS);
+            result.setMessage(SoalJenisConstant.SOALJENISGETALLSTATUSDISABLESUCCES);
             result.setDatas(data);
             return ResponseEntity.ok(result);
         }catch (Exception e){
@@ -138,7 +138,7 @@ public class SoalJenisController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
-    @PutMapping(value = "/updateStat/{id}")
+    @PutMapping(value = "/toactive/{id}")
     public ResponseEntity updateSoalJenisStatActive(@PathVariable UUID id)throws Exception{
         RestResponse result = new RestResponse();
         try {

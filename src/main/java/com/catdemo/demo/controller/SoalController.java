@@ -79,7 +79,7 @@ public class SoalController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
-    @GetMapping(value ="/toactive/{id}")
+    @PostMapping(value ="/toactive/{id}")
     public ResponseEntity SoalToActiveById(@PathVariable UUID id){
         result = new RestResponse();
         try {
@@ -145,7 +145,7 @@ public class SoalController {
             service.getSoalService().UpdateSoal(request);
             result.setMessage(SoalConstant.SOALUPDATESUCCESS);
             result.setSuccess(true);
-            result.setDatas(request);
+            result.setDatas("");
             return ResponseEntity.ok(request);
         }catch (Exception e) {
             result.setSuccess(false);

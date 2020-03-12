@@ -12,4 +12,6 @@ public class SoalJenisConstant {
     public static String SOALJENISDELETEBYIDSUCCESS = "Soal Jenis Delete Success";
     public static String SOALJENISDISABLENOTABLE = "Soal jenis Disable Tidak Ada";
     public static String SOALJENISUPDATESTATACTIVESUCCESS = "Soal Jenis Update Stat Active Succsess";
+    public static String SOALJENISGETALLSTATUSDISABLESUCCES = "Get All Soal Jenis Status Disble Success";
+    public static String SOALJENISGETALLSTATUSACTIVESUCCESS = "Get All Soal Jenis Status Active Success";
 }

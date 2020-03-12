@@ -79,7 +79,7 @@ public class UjianSettingController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
-    @GetMapping(value ="/toactive/{id}")
+    @PostMapping(value ="/toactive/{id}")
     public ResponseEntity UjianSettingToActiveById(@PathVariable UUID id){
         result = new RestResponse();
         try {
@@ -130,8 +130,8 @@ public class UjianSettingController {
             service.getUjianSettingService().SaveUjianSetting(request);
             result.setMessage(UjianSettingConstant.UJIANSETTINGADDSUCCESS);
             result.setSuccess(true);
-            result.setDatas(request);
-            return ResponseEntity.ok(request);
+            result.setDatas("");
+            return ResponseEntity.ok(result);
         }catch (Exception e) {
             result.setSuccess(false);
             result.setMessage(e.getMessage());
@@ -146,7 +146,7 @@ public class UjianSettingController {
             result.setMessage(UjianSettingConstant.UJIANSETTINGUPDATESUCCESS);
             result.setSuccess(true);
             result.setDatas(request);
-            return ResponseEntity.ok(request);
+            return ResponseEntity.ok(result);
         }catch (Exception e) {
             result.setSuccess(false);
             result.setMessage(e.getMessage());

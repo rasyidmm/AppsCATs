@@ -33,7 +33,7 @@ public class SoalKelompokController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
-    @GetMapping(value = "/active/")
+    @GetMapping(value = "/statactive/")
     public ResponseEntity SoalKelompolGetAllActive(){
         RestResponse result =  new RestResponse();
         try {
@@ -48,7 +48,7 @@ public class SoalKelompokController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
-    @GetMapping(value = "/disable/")
+    @GetMapping(value = "/statdisable/")
     public ResponseEntity SoalKelompolGetAllDisable(){
         RestResponse result =  new RestResponse();
         try {
