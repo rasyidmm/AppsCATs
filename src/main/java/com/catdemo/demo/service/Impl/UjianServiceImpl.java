@@ -42,6 +42,7 @@ public class UjianServiceImpl implements UjianService {
             UjianEntity ujians = new UjianEntity();
             ujians.setNamaUjian(request.getNamaUjian());
             ujians.setAktorEntity(service.getAktorService().getAktorById(request.getIdAktorEntity()));
+            repo.getUjianRepository().save(ujians);
             GetSoalTwkRandom(request.getNamaUjian());
 //            GetSoalTKPRandom(request.getNamaUjian());
 //            GetSoalTIURandom(request.getNamaUjian());
@@ -86,30 +87,31 @@ public class UjianServiceImpl implements UjianService {
        return dd;
     }
 
+    @Override
+    public List<UjianEntity> findAllByUjianAndSoal(String namaUjian, UUID idSoal) {
+        List<UjianEntity> sel = new ArrayList<>();
+        repo.getUjianRepository().findAllByUjianAndSoal(namaUjian,idSoal).forEach(sel::add);
+        return sel;
+    }
 
-    private void GetSoalTwkRandom(String namaUjian){
 
-        int twk = 5;
-        List<UUID> uuidtampung =new ArrayList<>();
+    public void GetSoalTwkRandom(String namaUjian){
+
+        int twk = service.getUjianSettingService().getValueTwk().getValueSetting();
         List<SoalEntity>soalListTwk =service.getSoalService().getAllSoalTWKActive();
-        int temp = 0;
         Random random =  new Random();
-        for(int z = 0; twk ==uuidtampung.size();z++ ){
-            SoalEntity soalrandom = soalListTwk.get(random.nextInt(soalListTwk.size()));
 
-                for (int l =0;l== uuidtampung.size();l++){
-                    if(soalrandom.getId().equals(uuidtampung.get(l))){
-                        temp=+1;
-                    }
-                }
-                if (temp==0){
-                    uuidtampung.add(soalrandom.getId());
-                    UjianSoalEntity use = new UjianSoalEntity();
-                    use.setUjianEntity(service.getUjianService().getUjianByNameUjian(namaUjian));
-                    use.setSoalEntity(soalrandom);
-                    repo.getUjianSoalRepository().save(use);
-                }
-                temp = 0;
+        int z=0;
+        while ( z<twk){
+            SoalEntity soalrandom = soalListTwk.get(random.nextInt(soalListTwk.size()));
+            List<UjianEntity> nulable = findAllByUjianAndSoal(namaUjian,soalrandom.getId());
+            if(nulable.size()==0){
+                UjianSoalEntity use = new UjianSoalEntity();
+                use.setUjianEntity(service.getUjianService().getUjianByNameUjian(namaUjian));
+                use.setSoalEntity(soalrandom);
+                repo.getUjianSoalRepository().save(use);
+                z++;
+            }
         }
     }
     private void GetSoalTIURandom(String namaUjian){

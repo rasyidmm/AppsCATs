@@ -21,7 +21,7 @@ public class UjianController {
     @Autowired
     ServiceFac service;
     RestResponse result;
-    @PostMapping(value = "/")
+    @PostMapping(value = "/add")
     public ResponseEntity SetUpUjian(@RequestBody UjianRequest request){
         result = new RestResponse();
         UUID idc = UUID.randomUUID();
@@ -29,7 +29,7 @@ public class UjianController {
             String namaUjian =  service.getAktorService().getAktorById(request.getIdAktorEntity()).getNamaDepan().concat(idc.toString() );
             request.setNamaUjian(namaUjian);
             service.getUjianService().SaveUjian(request);
-            result.setDatas(service.getSoalService().getAlSoalByNamaUjian(namaUjian));
+            result.setDatas(service.getUjianService().getUjianByNameUjian(namaUjian));
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             result.setSuccess(false);

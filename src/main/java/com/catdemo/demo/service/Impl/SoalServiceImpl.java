@@ -130,16 +130,16 @@ public class SoalServiceImpl implements SoalService {
     @Override
     public List<SoalEntity> getAllSoalTWKActive() {
         List<SoalEntity> sel = new ArrayList<>();
-        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity(SoalConstant.SOALSTATACTIVE,repo.getSoalKelompokRepository().
-                findByNamaSoalKelompok(UjianSettingConstant.UJIANSETTINGTWK).
-                getId()).forEach(sel::add);
+        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity
+                (repo.getSoalKelompokRepository().findByNamaSoalKelompok(UjianSettingConstant.UJIANSETTINGTWK).getId()).
+                forEach(sel::add);
         return sel;
     }
 
     @Override
     public List<SoalEntity> getAllSoalTIUActive() {
         List<SoalEntity> sel = new ArrayList<>();
-        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity(SoalConstant.SOALSTATACTIVE,repo.getSoalKelompokRepository().
+        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity(repo.getSoalKelompokRepository().
                 findByNamaSoalKelompok(UjianSettingConstant.UJIANSETTINGTIU).
                 getId()).forEach(sel::add);
         return sel;
@@ -148,7 +148,7 @@ public class SoalServiceImpl implements SoalService {
     @Override
     public List<SoalEntity> getAllSoalTKPActive() {
         List<SoalEntity> sel = new ArrayList<>();
-        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity(SoalConstant.SOALSTATACTIVE,repo.getSoalKelompokRepository().
+        repo.getSoalRepository().findAllByStatusAndSoalKelompokEntity(repo.getSoalKelompokRepository().
                 findByNamaSoalKelompok(UjianSettingConstant.UJIANSETTINGTKP).
                 getId()).forEach(sel::add);
         return sel;
@@ -158,6 +158,13 @@ public class SoalServiceImpl implements SoalService {
     public List<SoalEntity> getAlSoalByNamaUjian(String namaUjian) {
         List<SoalEntity> sel = new ArrayList<>();
         repo.getSoalRepository().findAllByNamaUjian(namaUjian).forEach(sel::add);
+        return sel;
+    }
+
+    @Override
+    public List<SoalEntity> getAllSoalByUjianId(UUID idUjian) {
+        List<SoalEntity> sel = new ArrayList<>();
+        repo.getSoalRepository().findAllByUjianId(idUjian).forEach(sel::add);
         return sel;
     }
 

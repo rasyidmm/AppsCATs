@@ -161,4 +161,36 @@ public class SoalController {
         result.setDatas(service.getSoalService().getRandom());
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping(value = "/soalactivetwk")
+    public ResponseEntity SoalGelAllactvetwk(){
+        result =new RestResponse();
+        try {
+            List<SoalEntity> data =  service.getSoalService().getAllSoalTWKActive();
+            result.setMessage(SoalConstant.SOALGETALLSUCCESS);
+            result.setSuccess(true);
+            result.setDatas(data);
+            return ResponseEntity.ok(result);
+        }catch (Exception e){
+            result.setMessage(e.getMessage());
+            result.setSuccess(true);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+        }
+    }
+
+    @GetMapping(value = "/soalwithujianid/{id}")
+    public ResponseEntity SoalGetAllByIdUjia(@PathVariable UUID id){
+        result =new RestResponse();
+        try {
+            List<SoalEntity>data = service.getSoalService().getAllSoalByUjianId(id);
+            result.setMessage(SoalConstant.SOALGETALLSUCCESS);
+            result.setSuccess(true);
+            result.setDatas(data);
+            return ResponseEntity.ok(result);
+        }catch (Exception e){
+            result.setMessage(e.getMessage());
+            result.setSuccess(true);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+        }
+    }
 }

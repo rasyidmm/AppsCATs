@@ -21,4 +21,5 @@ public interface SoalService {
     public List<SoalEntity> getAllSoalTIUActive() ;
     public List<SoalEntity> getAllSoalTKPActive() ;
     public List<SoalEntity> getAlSoalByNamaUjian(String namaUjian);
+    public List<SoalEntity> getAllSoalByUjianId(UUID idUjian);
 }
