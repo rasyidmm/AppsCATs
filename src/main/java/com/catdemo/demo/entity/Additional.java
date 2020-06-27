@@ -12,7 +12,6 @@ public abstract class Additional {
     @Id
     @GeneratedValue
     private UUID id;
-
     private String createDate;
     private String updateDate;
     private String createBy;
