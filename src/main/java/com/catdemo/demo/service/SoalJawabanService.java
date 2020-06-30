@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public interface SoalJawabanService {
     public List<SoalJawabanEntity> getAllSoalJawaban() ;
+    public List<SoalJawabanEntity> getAllSoalJawabanByIdSoal(UUID idSOal);
     public SoalJawabanEntity getSoalJawabanById(UUID id) ;
     public void SaveSoalJawaban(SoalJawabanRequest request) throws Exception;
     public void UpdateSoalJawaban(SoalJawabanRequest request)throws Exception;

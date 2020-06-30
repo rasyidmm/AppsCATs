@@ -6,10 +6,7 @@ import com.catdemo.demo.entity.UjianSoalEntity;
 import com.catdemo.demo.factory.RepositoryFac;
 import com.catdemo.demo.factory.ServiceFac;
 import com.catdemo.demo.payload.request.UjianRequest;
-import com.catdemo.demo.payload.request.UjianSettingRequest;
 import com.catdemo.demo.service.UjianService;
-import com.catdemo.demo.util.constants.UjianConstant;
-import com.catdemo.demo.util.constants.UjianSettingConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,22 +27,43 @@ public class UjianServiceImpl implements UjianService {
     }
 
     @Override
-    public UjianEntity getUjianById(UUID id) {
-        return null;
+    public List<UjianEntity> getUjianById(UUID id) {
+        List<UjianEntity> ael = new ArrayList<>();
+        repo.getUjianRepository().findByIdJoin(id).forEach(ael::add);;
+        return ael;
     }
 
     @Override
     public void SaveUjian(UjianRequest request) throws Exception {
 
         try {
-
+            long duration = 0;
+            if(request.getTiu()){
+                duration =+40;
+            }
+            if (request.getTkp()){
+                duration =+40;
+            }
+            if (request.getTwk()){
+                duration =+40;
+            }
             UjianEntity ujians = new UjianEntity();
             ujians.setNamaUjian(request.getNamaUjian());
             ujians.setAktorEntity(service.getAktorService().getAktorById(request.getIdAktorEntity()));
+
+            ujians.setDurasiUjian(duration);
             repo.getUjianRepository().save(ujians);
-            GetSoalTwkRandom(request.getNamaUjian());
-            GetSoalTKPRandom(request.getNamaUjian());
-            GetSoalTIURandom(request.getNamaUjian());
+            if(request.getTiu()){
+                GetSoalTIURandom(request.getNamaUjian());
+            }
+            if (request.getTkp()){
+                GetSoalTKPRandom(request.getNamaUjian());
+            }
+
+            if (request.getTwk()){
+                GetSoalTwkRandom(request.getNamaUjian());
+            }
+
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -97,7 +115,8 @@ public class UjianServiceImpl implements UjianService {
 
     public void GetSoalTwkRandom(String namaUjian){
 
-        int twk = service.getUjianSettingService().getValueTwk().getValueSetting();
+//        int twk = service.getUjianSettingService().getValueTwk().getValueSetting();
+        int twk = 5;
         List<SoalEntity>soalListTwk =service.getSoalService().getAllSoalTWKActive();
         Random random =  new Random();
 

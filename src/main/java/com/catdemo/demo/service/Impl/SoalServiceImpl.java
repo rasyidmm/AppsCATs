@@ -155,9 +155,9 @@ public class SoalServiceImpl implements SoalService {
     }
 
     @Override
-    public List<SoalEntity> getAlSoalByNamaUjian(String namaUjian) {
+    public List<SoalEntity> getAllSoalByNamaUjian(String namaUjian) {
         List<SoalEntity> sel = new ArrayList<>();
-        repo.getSoalRepository().findAllByNamaUjian(namaUjian).forEach(sel::add);
+        repo.getSoalRepository().findAllSoalByNamaUjial(namaUjian).forEach(sel::add);
         return sel;
     }
 

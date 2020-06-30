@@ -29,4 +29,12 @@ public class ServiceFac {
     @Autowired
     UjianSettingService ujianSettingService;
     public UjianSettingService getUjianSettingService(){return ujianSettingService;}
+    @Autowired
+    AktorJawabanService aktorJawabanService;
+    public  AktorJawabanService getAktorJawabanService(){return  aktorJawabanService;}
+    @Autowired
+    UjianHasilService ujianHasilService;
+    public UjianHasilService getUjianHasilService(){
+        return ujianHasilService;
+    }
 }

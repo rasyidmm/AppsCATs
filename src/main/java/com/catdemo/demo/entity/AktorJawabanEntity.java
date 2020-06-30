@@ -1,5 +1,6 @@
 package com.catdemo.demo.entity;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
@@ -7,12 +8,21 @@ import java.util.Set;
 public class AktorJawabanEntity extends Additional{
     @ManyToOne
     private AktorEntity aktorEntity;
-    @ManyToMany
-    private Set<SoalEntity> soalEntity;
-    @ManyToMany
-    private Set<SoalJawabanEntity> soalJawabanEntity;
-    @OneToMany
-    private Set <UjianEntity> ujianEntity;
+    @ManyToOne
+    private SoalEntity soalEntity;
+    @ManyToOne
+    private SoalJawabanEntity soalJawabanEntity;
+    @ManyToOne
+    private UjianEntity ujianEntity;
+    Long Skor;
+
+    public Long getSkor() {
+        return Skor;
+    }
+
+    public void setSkor(Long skor) {
+        Skor = skor;
+    }
 
     public AktorEntity getAktorEntity() {
         return aktorEntity;
@@ -22,27 +32,27 @@ public class AktorJawabanEntity extends Additional{
         this.aktorEntity = aktorEntity;
     }
 
-    public Set<SoalEntity> getSoalEntity() {
+    public SoalEntity getSoalEntity() {
         return soalEntity;
     }
 
-    public void setSoalEntity(Set<SoalEntity> soalEntity) {
+    public void setSoalEntity(SoalEntity soalEntity) {
         this.soalEntity = soalEntity;
     }
 
-    public Set<SoalJawabanEntity> getSoalJawabanEntity() {
+    public SoalJawabanEntity getSoalJawabanEntity() {
         return soalJawabanEntity;
     }
 
-    public void setSoalJawabanEntity(Set<SoalJawabanEntity> soalJawabanEntity) {
+    public void setSoalJawabanEntity(SoalJawabanEntity soalJawabanEntity) {
         this.soalJawabanEntity = soalJawabanEntity;
     }
 
-    public Set<UjianEntity> getUjianEntity() {
+    public UjianEntity getUjianEntity() {
         return ujianEntity;
     }
 
-    public void setUjianEntity(Set<UjianEntity> ujianEntity) {
+    public void setUjianEntity(UjianEntity ujianEntity) {
         this.ujianEntity = ujianEntity;
     }
 }

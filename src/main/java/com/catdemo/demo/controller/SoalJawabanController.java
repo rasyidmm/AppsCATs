@@ -154,4 +154,19 @@ public class SoalJawabanController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
+    @GetMapping(value = "/getjwbbyidsoal/{id}")
+    public ResponseEntity SoalJawabanUpdate(@PathVariable UUID id) throws Exception{
+        RestResponse result = new RestResponse();
+        try {
+            List<SoalJawabanEntity>sjl = service.getSoalJawabanService().getAllSoalJawabanByIdSoal(id);
+            result.setMessage("Get Soal Jawaban By Id Soal sukses");
+            result.setSuccess(true);
+            result.setDatas(sjl);
+            return ResponseEntity.ok(result);
+        }catch (Exception e) {
+            result.setSuccess(false);
+            result.setMessage(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+        }
+    }
 }

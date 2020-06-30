@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface UjianHasilRepository extends JpaRepository<UjianHasilEntity, UUID> {
+    UjianHasilEntity findAllByUjianEntityId(UUID idUjian);
 }

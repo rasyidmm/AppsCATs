@@ -31,18 +31,11 @@ public class RepositoryFac {
     @Autowired
     UjianSettingRepository ujianSettingRepository;
     public UjianSettingRepository getUjianSettingRepository(){return ujianSettingRepository;}
-
-
-
-
-
-
-
-
-
-
-
-
+    @Autowired
+    UjianHasilRepository ujianHasilRepository;
+    public UjianHasilRepository getUjianHasilRepository(){
+        return ujianHasilRepository;
+    }
     //
     @Autowired
     UjianSoalRepository ujianSoalRepository;

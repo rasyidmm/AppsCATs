@@ -7,10 +7,7 @@ import com.catdemo.demo.util.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +26,23 @@ public class UjianController {
             String namaUjian =  service.getAktorService().getAktorById(request.getIdAktorEntity()).getNamaDepan().concat(idc.toString() );
             request.setNamaUjian(namaUjian);
             service.getUjianService().SaveUjian(request);
+            result.setMessage("Create Ujian sukses");
+            result.setSuccess(true);
             result.setDatas(service.getUjianService().getUjianByNameUjian(namaUjian));
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            result.setSuccess(false);
+            result.setMessage(e.getStackTrace().toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+        }
+    }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity GetUjianById(@PathVariable UUID id){
+        result = new RestResponse();
+        try {
+            result.setMessage("Create Ujian sukses");
+            result.setSuccess(true);
+            result.setDatas(service.getUjianService().getUjianById(id));
             return ResponseEntity.ok(result);
         } catch (Exception e) {
             result.setSuccess(false);

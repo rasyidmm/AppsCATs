@@ -8,15 +8,25 @@ import javax.persistence.OneToOne;
 @Cacheable
 public class UjianHasilEntity extends Additional{
     @OneToOne
-    private UjianPenilaianEntity ujianPenilaianEntity;
+    private UjianEntity ujianEntity;
     private Long Hasil;
+    @OneToOne
+    private AktorEntity aktorEntity;
 
-    public UjianPenilaianEntity getUjianPenilaianEntity() {
-        return ujianPenilaianEntity;
+    public AktorEntity getAktorEntity() {
+        return aktorEntity;
     }
 
-    public void setUjianPenilaianEntity(UjianPenilaianEntity ujianPenilaianEntity) {
-        this.ujianPenilaianEntity = ujianPenilaianEntity;
+    public void setAktorEntity(AktorEntity aktorEntity) {
+        this.aktorEntity = aktorEntity;
+    }
+
+    public UjianEntity getUjianEntity() {
+        return ujianEntity;
+    }
+
+    public void setUjianEntity(UjianEntity ujianEntity) {
+        this.ujianEntity = ujianEntity;
     }
 
     public Long getHasil() {
@@ -26,4 +36,5 @@ public class UjianHasilEntity extends Additional{
     public void setHasil(Long hasil) {
         Hasil = hasil;
     }
+
 }

@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface UjianService {
     public List<UjianEntity> getAllUjian() ;
-    public UjianEntity getUjianById(UUID id) ;
+    public List<UjianEntity> getUjianById(UUID id) ;
     public void SaveUjian(UjianRequest request) throws Exception;
     public void UpdateUjian(UjianRequest request)throws Exception;
     public void deleteUjianById(UUID id);

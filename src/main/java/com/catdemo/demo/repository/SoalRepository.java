@@ -17,8 +17,10 @@ public interface SoalRepository extends JpaRepository<SoalEntity, UUID> {
     List<SoalEntity>findAllByStatusAndSoalKelompokEntity(UUID idske);
     @Query(value = "select * from soal_entity se join ujian_soal_entity use on se.id = use.ujian_entity_id join ujian_entity ue on use.ujian_entity_id =ue.id where ue.nama_ujian =:namaUjian ",nativeQuery = true)
     List<SoalEntity>findAllByNamaUjian(String namaUjian);
-    @Query(value = "select * from soal_entity se join ujian_soal_entity use ON se.id =use.soal_entity_id where use.ujian_entity_id ='6bb21983-5ab1-462e-b8bf-bcf7d47d4d83'",nativeQuery = true)
+    @Query(value = "select * from soal_entity se join ujian_soal_entity use ON se.id =use.soal_entity_id where use.ujian_entity_id =:idujin ",nativeQuery = true)
     List<SoalEntity>findAllByUjianId(UUID idujin);
+    @Query(value = "select *,ue.nama_ujian ,ue.id AS idUjian from soal_entity se join ujian_soal_entity use on se.id=use.soal_entity_id join ujian_entity ue on ue.id =use.ujian_entity_id where ue.nama_ujian =:namaUjian",nativeQuery = true)
+    List<SoalEntity>findAllSoalByNamaUjial(String namaUjian);
 
 
 }

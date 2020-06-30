@@ -28,6 +28,12 @@ public class SoalJawabanServiceImpl implements SoalJawabanService {
         return sjel;
     }
 
+    public List<SoalJawabanEntity> getAllSoalJawabanByIdSoal(UUID id ) {
+        List<SoalJawabanEntity> sjesl = new ArrayList<>();
+        repo.getSoalJawabanRepository().findAllBySoalEntityId(id).forEach(sjesl::add);
+        return sjesl;
+    }
+
     @Override
     public SoalJawabanEntity getSoalJawabanById(UUID id) {
         SoalJawabanEntity sje = repo.getSoalJawabanRepository().findById(id).get();
@@ -45,7 +51,7 @@ public class SoalJawabanServiceImpl implements SoalJawabanService {
             sje.setCreateDate(timeDo.format(new Date()));
             sje.setVersion((long) 1);
             sje.setStatus(SoalJawabanConstant.SOALJAWABANACTIVE);
-            sje.setSoalEntity(repo.getSoalRepository().findById(request.getId()).get());
+            sje.setSoalEntity(repo.getSoalRepository().findById(request.getIdSoalEntity()).get());
             repo.getSoalJawabanRepository().save(sje);
         }catch (Exception e){
             throw  new Exception(e.getMessage());
@@ -120,8 +126,10 @@ public class SoalJawabanServiceImpl implements SoalJawabanService {
     private void FieldNullChecker(SoalJawabanRequest request) throws Exception{
         if (request.getIdSoalEntity() ==null){
             throw new Exception(SoalJawabanConstant.SOALJAWABANIDSOALNULL);
-        }else if(request.getSoalJawaban().isEmpty() || request.getLinkimageJawaban().isEmpty()){
-            throw new Exception(SoalJawabanConstant.SOALJAWABANANDIMAGENULL);
+        }else if(request.getSoalJawaban().isEmpty()){
+            if (request.getLinkimageJawaban().isEmpty()) {
+                throw new Exception(SoalJawabanConstant.SOALJAWABANANDIMAGENULL);
+            }
         }else if(request.getSkor() == null){
             throw new Exception(SoalJawabanConstant.SOALJAWABANSKORNULL);
         }

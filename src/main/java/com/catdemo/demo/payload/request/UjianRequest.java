@@ -4,18 +4,11 @@ import java.util.UUID;
 
 public class UjianRequest {
     private UUID id;
-    private String namaUjian;
-    private Long durasiUjian;
-    private UUID idSoalEntity;
+    String namaUjian;
     private UUID idAktorEntity;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    private Boolean twk;
+    private Boolean tiu;
+    private Boolean tkp;
 
     public String getNamaUjian() {
         return namaUjian;
@@ -25,27 +18,42 @@ public class UjianRequest {
         this.namaUjian = namaUjian;
     }
 
-    public Long getDurasiUjian() {
-        return durasiUjian;
+    public UUID getId() {
+        return id;
     }
 
-    public void setDurasiUjian(Long durasiUjian) {
-        this.durasiUjian = durasiUjian;
+    public void setId(UUID id) {
+        this.id = id;
     }
-
-    public UUID getIdSoalEntity() {
-        return idSoalEntity;
-    }
-
-    public void setIdSoalEntity(UUID idSoalEntity) {
-        this.idSoalEntity = idSoalEntity;
-    }
-
     public UUID getIdAktorEntity() {
         return idAktorEntity;
     }
 
     public void setIdAktorEntity(UUID idAktorEntity) {
         this.idAktorEntity = idAktorEntity;
+    }
+
+    public Boolean getTwk() {
+        return twk;
+    }
+
+    public void setTwk(Boolean twk) {
+        this.twk = twk;
+    }
+
+    public Boolean getTiu() {
+        return tiu;
+    }
+
+    public void setTiu(Boolean tiu) {
+        this.tiu = tiu;
+    }
+
+    public Boolean getTkp() {
+        return tkp;
+    }
+
+    public void setTkp(Boolean tkp) {
+        this.tkp = tkp;
     }
 }

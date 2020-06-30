@@ -13,4 +13,6 @@ public interface UjianRepository extends JpaRepository<UjianEntity, UUID> {
     UjianEntity findByNamaUjian(String namaUjian);
     @Query(value = "select * from ujian_entity ue join ujian_soal_entity use on ue.id = use.ujian_entity_id where ue.nama_ujian =:namaUjian and use.soal_entity_id =:idSoal ", nativeQuery = true)
     List<UjianEntity> findAllByUjianAndSoal(String namaUjian, UUID idSoal);
+    @Query(value = "select * from ujian_entity ue join ujian_soal_entity use on ue.id =use.ujian_entity_id where ue.id =:idUjian ",nativeQuery = true)
+    List<UjianEntity> findByIdJoin(UUID idUjian);
 }
