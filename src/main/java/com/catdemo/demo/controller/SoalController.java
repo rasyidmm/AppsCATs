@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/API/Soal")
 public class SoalController {
     @Autowired
     ServiceFac service;
-    RestResponse result;
-    @GetMapping(value = "/")
+    @SuppressWarnings("rawtypes")
+	RestResponse result;
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@GetMapping(value = "/")
     public ResponseEntity SoalGelAll(){
         result =new RestResponse();
         try {
